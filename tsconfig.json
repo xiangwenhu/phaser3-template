@@ -1,0 +1,51 @@
+{
+    "exclude": [       
+    ],
+    "compilerOptions": {
+        "rootDirs": ["./src"],
+        "outDir": "./dist/",
+        "baseUrl": "./",
+        "noImplicitAny": false,
+        "paths": {
+            "@images/*": [
+                "src/images/*"
+            ],           
+            "@services/*": [
+                "src/services/*"
+            ],          
+            "@util/*": [
+                "src/util/*"
+            ],
+            "@typess/*": [
+                "src/types/*"
+            ],      
+            "@const/*": [
+                "src/const/*"
+            ],
+            "@/*": [
+                "src/*"
+            ]
+        },
+        "module": "esnext",
+        "target": "ES2016",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "allowJs": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "allowUmdGlobalAccess": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "webworker",
+            "DOM",
+            "scripthost",
+            "es5",
+            "es2015",
+            "es2016",
+            "es2015.promise",
+            "ESNext",
+        ]
+    }
+}

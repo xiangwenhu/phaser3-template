@@ -1,0 +1,42 @@
+<h1 align="center"> 
+  Phaser 3 TypeScript Starter Template
+</h1>
+
+<h4 align="center">
+A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a> with <a href="https://www.typescriptlang.org/index.html" target="_blank" >TypeScript</a> and <a href="https://webpack.js.org/" target="_blank" >webpack</a> for building excellent html5-games that work great in the browser and on mobile devices.</h4>
+
+
+
+## Key Features
+
+- 高级语法 async/await, Rest/Spread operators
+- 代码拆分
+- webpack的配置使用TypeScript编写
+- Phaser采用外链，极大加速编译速度
+- 内置DllPlugin，分离第三方包，提速
+- 内置代码混淆
+- 支持使用.env自定义环境配置数据
+- 支持动态分包
+
+
+## 如何使用
+
+
+```console
+
+
+$ cd phaser-template
+
+$ npm install
+
+$ npm start
+
+打包线上
+$ npm run build
+
+```
+
+
+## 参考
+> [phaser-project-template](https://github.com/yandeu/phaser-project-template)
+ [phaser3-es6-webpack](https://github.com/nkholski/phaser3-es6-webpack)
