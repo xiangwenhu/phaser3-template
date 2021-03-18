@@ -9,6 +9,12 @@ export default class extends Phaser.Scene {
     }
 
     preload() {
+
+        if (this.game.device.os.desktop) {
+            // this.game.scale.scaleMode = Phaser.Scale.ScaleModes.NONE
+        } else {
+            this.game.scale.scaleMode = Phaser.Scale.ScaleModes.WIDTH_CONTROLS_HEIGHT
+        }
         // 加载进度条所需必备的资源
         this.ready = true;
     }
@@ -18,5 +24,5 @@ export default class extends Phaser.Scene {
             this.scene.start('PreloadScene')
         }
     }
-    
+
 }

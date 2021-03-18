@@ -3,10 +3,10 @@ const DEFAULT_HEIGHT = 1334
 
 export default  {
   type: Phaser.AUTO,
-  backgroundColor: '#ffffff',
+  backgroundColor: '#000',
   scale: {
     parent: 'phaser-game',
-    mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
+    mode:  Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT

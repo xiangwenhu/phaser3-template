@@ -1,10 +1,37 @@
+import Phaser from "phaser";
+import ProgressBar from "../objects/ProgressBar";
+
 export default class extends Phaser.Scene {
+
+  private progressBar: ProgressBar;
+
   constructor() {
     super({ key: 'PreloadScene' })
   }
 
   preload() {
-    this.load.image('phaser-logo', 'assets/images/phaser-logo.png')
+
+
+    this.progressBar = new ProgressBar(this);
+
+    this.load.on('progress', value => {
+      this.progressBar.setProgress(value);
+    });
+
+    this.load.on('fileprogress', file => {
+      this.progressBar.setFileProgress(file.key);
+    });
+
+    this.load.on('complete', () => {
+      this.progressBar.destroy();
+    })
+
+
+    this.load.image(`phaser-logo`, 'assets/images/phaser-logo.png');
+    for (let i = 0; i < 100; i++) {
+      this.load.image(`phaser-logo-${i + 1}`, 'assets/images/phaser-logo.png');
+    }
+
   }
 
   create() {
