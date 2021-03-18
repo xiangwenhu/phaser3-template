@@ -12,6 +12,7 @@ export default class extends Phaser.Scene {
   preload() {
 
 
+    console.time("preload-time");
     this.progressBar = new ProgressBar(this);
 
     this.load.on('progress', value => {
@@ -24,6 +25,7 @@ export default class extends Phaser.Scene {
 
     this.load.on('complete', () => {
       this.progressBar.destroy();
+      console.timeEnd("preload-time");
     })
 
 

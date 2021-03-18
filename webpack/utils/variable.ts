@@ -15,6 +15,9 @@ export function getCDNPath(){
 }
 
 
+export const  packageJson = require("../../package");
+
+
 export const ENV_CONFIG_PATH =  `./env/${NODE_ENV || "dev"}.env`
 
 

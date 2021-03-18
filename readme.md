@@ -10,13 +10,15 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 ## Key Features
 
 - 高级语法 async/await, Rest/Spread operators
-- 代码拆分
+- 支持代码拆分
 - webpack的配置使用TypeScript编写
 - Phaser采用外链，极大加速编译速度
-- 内置DllPlugin，分离第三方包，提速
+- 内置DllPlugin，分离第三方包，飞一样的感觉
 - 内置代码混淆
 - 支持使用.env自定义环境配置数据
 - 支持动态分包
+- 内置加载进度条
+- 内置 service worker
 
 
 ## 如何使用
