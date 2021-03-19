@@ -26,7 +26,7 @@
                 "src/*"
             ]
         },
-        "module": "esnext",
+        "module": "commonjs",
         "target": "ES2016",
         "moduleResolution": "node",
         "jsx": "react",

@@ -20,6 +20,9 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 - 内置加载进度条
 - 内置 service worker
 - 内置基于axios的服务请求封装
+- 内置tiny图片压缩
+- 内置 socket.io
+- 内置Boot, Preload等场景
 
 
 ## 如何使用

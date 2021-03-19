@@ -13,7 +13,8 @@
     "dll": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=prod webpack --config webpack/dll.config.ts",
     "tiny": "tinypng -p ./src/assets/images -d ./dist/assets/images",
     "build:test": "npm run build:ts:test & npm run tiny",
-    "build": "npm run build:ts & npm run tiny"
+    "build": "npm run build:ts & npm run tiny",
+    "test": "ts-node ./src/tests/socket.ts"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",

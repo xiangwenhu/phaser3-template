@@ -1,8 +1,8 @@
 1. 引入phaser注意
 ```ts
-import 'Phaser';
+import 'phaser';
 
-import  phaser from  'Phaser';
+import  Phaser from  'phaser';
 ```
 前者配置陪 externals，开发模式也会被打入包体。
 
