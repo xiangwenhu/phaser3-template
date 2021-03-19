@@ -19,6 +19,7 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 - 支持动态分包
 - 内置加载进度条
 - 内置 service worker
+- 内置基于axios的服务请求封装
 
 
 ## 如何使用
