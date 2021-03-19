@@ -18,30 +18,34 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 - 支持使用.env自定义环境配置数据
 - 支持动态分包
 - 内置加载进度条
+- 内置Boot, Preload等场景
 - 内置 service worker
 - 内置基于axios的服务请求封装
 - 内置tiny图片压缩
 - 内置 socket.io
-- 内置Boot, Preload等场景
+
 
 
 ## 如何使用
 
-
+**开发**
 ```console
-
-
-$ cd phaser-template
-
 $ npm install
+
+$ npm run dll
 
 $ npm start
 
-打包线上
+```
+**打包**
+```console
+$ npm install
+
+$ npm run dll
+
 $ npm run build
 
 ```
-
 
 ## 参考
 > [phaser-project-template](https://github.com/yandeu/phaser-project-template)
