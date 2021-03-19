@@ -7,7 +7,8 @@ const config: Configuration = {
     mode: "production",
     entry: {     
         library: [  
-            "axios"    
+            "axios",
+            "socket.io-client"    
         ]
     },
     output: {

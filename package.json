@@ -8,9 +8,12 @@
   "scripts": {
     "start": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\"  NODE_ENV=dev webpack serve --config webpack/dev.config.ts",
     "startPro": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=prod webpack serve  --config webpack/dev.config.ts",
-    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=prod webpack --config webpack/prod.config.ts",
-    "build:test": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\"  NODE_ENV=test webpack --config webpack/dev.config.ts",
-    "dll": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=prod webpack --config webpack/dll.config.ts"
+    "build:ts": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=prod webpack --config webpack/prod.config.ts",
+    "build:ts:test": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\"  NODE_ENV=test webpack --config webpack/dev.config.ts",
+    "dll": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" NODE_ENV=prod webpack --config webpack/dll.config.ts",
+    "tiny": "tinypng -p ./src/assets/images -d ./dist/assets/images",
+    "build:test": "npm run build:ts:test & npm run tiny",
+    "build": "npm run build:ts & npm run tiny"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -39,6 +42,7 @@
     "image-webpack-loader": "^7.0.1",
     "imagemin": "^7.0.1",
     "javascript-obfuscator": "^2.11.0",
+    "m-tinypng": "^0.0.3",
     "script-ext-html-webpack-plugin": "^2.1.5",
     "terser-webpack-plugin": "^5.1.1",
     "thread-loader": "^3.0.1",
@@ -54,6 +58,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "phaser": "^3.53.1"
+    "phaser": "^3.53.1",
+    "socket.io-client": "^4.0.0"
   }
 }
