@@ -30,7 +30,7 @@ export default class extends Phaser.Scene {
 
 
     this.load.image(`phaser-logo`, 'assets/images/phaser-logo.png');
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < 10; i++) {
       this.load.image(`phaser-logo-${i + 1}`, 'assets/images/phaser-logo.png');
     }
 

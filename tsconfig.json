@@ -8,13 +8,13 @@
         "noImplicitAny": false,
         "paths": {
             "@images/*": [
-                "src/images/*"
+                "src/assets/images/*"
             ],           
             "@services/*": [
                 "src/services/*"
             ],          
-            "@util/*": [
-                "src/util/*"
+            "@utils/*": [
+                "src/utils/*"
             ],
             "@typess/*": [
                 "src/types/*"

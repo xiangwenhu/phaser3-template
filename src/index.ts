@@ -43,3 +43,4 @@ function resizeCanvas() {
 
 window.addEventListener('resize', resizeCanvas, false);
 (window as any).resizeP = resizeCanvas;
+
