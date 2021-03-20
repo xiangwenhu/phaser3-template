@@ -1,6 +1,9 @@
 import Phaser from "phaser";
 import ProgressBar from "../objects/ProgressBar";
 
+// 也可以使用这样方式，就不用提示用this.addImage
+import phaserLogo from "../assets/images/phaser-logo.png";
+
 export default class extends Phaser.Scene {
 
   private progressBar: ProgressBar;
@@ -10,7 +13,34 @@ export default class extends Phaser.Scene {
   }
 
   preload() {
+    this.addProgressBar();
 
+    // 加载图片方法一 import  缺点，头部一大堆的import
+    this.load.image("phaser-logo-i", phaserLogo);
+    // 加载图片方法二 require, 缺点, 文件夹下不被使用的图片，也会被打包
+    this.addImage(`phaser-logo`, 'phaser-logo.png');
+
+    for (let i = 0; i < 10; i++) {
+      this.addImage(`phaser-logo-${i + 1}`, 'phaser-logo.png');
+    }
+  }
+
+
+  addImage(key: string | Phaser.Types.Loader.FileTypes.ImageFileConfig | Phaser.Types.Loader.FileTypes.ImageFileConfig[], url?: string | string[], xhrSettings?: Phaser.Types.Loader.XHRSettingsObject) {
+
+    if (!Array.isArray(url)) {
+      return this.load.image(key, require(`../assets/images/${url}`), xhrSettings);
+    }
+
+    url.forEach(u => {
+      this.load.image(key, require(`../assets/images/${u}`), xhrSettings);
+    })
+
+  }
+
+
+
+  addProgressBar() {
 
     console.time("preload-time");
     this.progressBar = new ProgressBar(this);
@@ -26,18 +56,12 @@ export default class extends Phaser.Scene {
     this.load.on('complete', () => {
       this.progressBar.destroy();
       console.timeEnd("preload-time");
+      this.scene.start('MainScene')
     })
-
-
-    this.load.image(`phaser-logo`, 'assets/images/phaser-logo.png');
-    for (let i = 0; i < 10; i++) {
-      this.load.image(`phaser-logo-${i + 1}`, 'assets/images/phaser-logo.png');
-    }
 
   }
 
   create() {
-    this.scene.start('MainScene')
 
     /**
      * This is how you would dynamically import the mainScene class (with code splitting),

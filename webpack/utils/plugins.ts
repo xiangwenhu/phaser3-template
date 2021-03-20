@@ -42,7 +42,7 @@ export function getPlugins() {
 
     const copyPlugin = new CopyWebpackPlugin({
         patterns: [
-            { from: 'src/assets', to: 'assets' },
+            // { from: 'src/assets', to: 'assets' },
             { from: 'src/favicon.ico', to: '' }
         ]
     });

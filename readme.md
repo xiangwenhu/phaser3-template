@@ -23,6 +23,8 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 - 内置基于axios的服务请求封装
 - 内置tiny图片压缩
 - 内置 socket.io
+- 内置指纹， 支持require和import引入模式，各有优缺点
+
 
 
 

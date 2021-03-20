@@ -28,13 +28,13 @@ export const config: Configuration = {
         globalObject: "this",
         // 打包异步代码
         chunkFilename: !IS_PRO ? "[name].chunk.js" : "[name].[fullhash].chunk.js",
-        publicPath: getCDNPath()
+        publicPath: getCDNPath(),
     },
     devtool: IS_DEV ? "source-map" : false,
     // stats: 'errors-only',
     plugins: getPlugins() as any[],
     cache: {
-        type: "filesystem"
+        type: "memory"
     },
     module: {
         rules: [
@@ -74,35 +74,55 @@ export const config: Configuration = {
             },
             {
                 test: /\.(png|jpg|gif|svg)$/i,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: "[folder]/[name].[ext]",
-                            outputPath: "images/",
-                            limit: 0,
-                            esModule: false
-                        },
-                    },
-                    {
-                        loader: 'image-webpack-loader',
-                        options: {
-                            mozjpeg: {
-                                progressive: true,
-                                quality: 85
-                            },
-                            optipng: {
-                                enabled: false,
-                            },
-                            pngquant: {
-                                quality: [0.65, 0.90]
-                            },
-                            gifsicle: {
-                                interlaced: false,
-                            }
-                        }
+                type: 'asset/resource',
+                generator: {
+                    filename: (context: any) => {
+
+                        // demo: src/assets/images/phaser-logo.png 
+                        const filename = context.filename;
+                        const filePath = path.resolve(__dirname, "../", filename);
+
+                        // 获得相对路径 assets\images\phaser-logo.png
+                        const relativePath = path.relative(SRC_PATH, filePath);
+                        // 截取 assets\images
+                        const pre = relativePath.slice(0, relativePath.lastIndexOf("\\"));
+
+                        // console.log("filename:", filename,  "filePath:", filePath, " src_path", SRC_PATH, " relativePath:", relativePath);
+                        
+                        // console.log("pre", pre);
+
+                        return `${pre}/[name].[hash:6][ext]`
                     }
-                ]
+                },
+                // use: [
+                //     {
+                //         loader: "file-loader",
+                //         options: {
+                //             name: "[folder]/[name].[ext]",
+                //             // outputPath: "images/",
+                //             limit: 0,
+                //             esModule: false
+                //         },
+                //     },
+                //     {
+                //         loader: 'image-webpack-loader',
+                //         options: {
+                //             mozjpeg: {
+                //                 progressive: true,
+                //                 quality: 85
+                //             },
+                //             optipng: {
+                //                 enabled: false,
+                //             },
+                //             pngquant: {
+                //                 quality: [0.65, 0.90]
+                //             },
+                //             gifsicle: {
+                //                 interlaced: false,
+                //             }
+                //         }
+                //     }
+                // ]
             }
         ]
     },
