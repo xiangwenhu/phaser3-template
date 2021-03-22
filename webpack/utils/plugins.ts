@@ -4,11 +4,11 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import ScriptExtHtmlWebpackPlugin from 'script-ext-html-webpack-plugin';
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import DotenvPlugin from "dotenv-webpack";
+import HtmlWebpackTagsPlugin from "html-webpack-tags-plugin";
 import path from "path";
 import { GenerateSW, ManifestEntry } from "workbox-webpack-plugin";
-
 import { SRC_PATH, DIST_PATH, NODE_ENV, IS_PRO, ENV_CONFIG_PATH, getCDNPath, packageJson } from "./variable";
-
+import globby from "globby";
 
 // peerDependencies WARNING script-ext-html-webpack-plugin@* requires a peer of webpack@^1.0.0 || ^2.0.0 || ^3.0.0 || ^4.0.0 but webpack@5.4.0 was installed
 
@@ -51,10 +51,11 @@ export function getPlugins() {
         path: ENV_CONFIG_PATH
     });
 
-    const dllLibraryPlugin = new webpack.DllReferencePlugin({
-        manifest: path.join(__dirname, "../../dist/dll/library-manifest.json")
-    })
+    // const dllLibraryPlugin = new webpack.DllReferencePlugin({
+    //     manifest: path.join(__dirname, "../../dist/dll/library-manifest.json")
+    // })
 
+    const dllReferencePlugins = getDllReferencePlugins();
     return [
         cleanPlugin,
         ...getHTMLPlugins(),
@@ -62,10 +63,19 @@ export function getPlugins() {
         definePlugin,
         copyPlugin,
         dotenvPlugin,
-        dllLibraryPlugin,
+        ...dllReferencePlugins,
         generateSW()
     ]
 
+}
+
+
+function getDllReferencePlugins() {
+    const jsonPaths = globby.sync(["dist/dll/*.json"]);
+
+    return jsonPaths.map(jsonPath => new webpack.DllReferencePlugin({
+        manifest: path.join(DIST_PATH, "../", jsonPath)
+    }))
 }
 
 function getHTMLPlugins() {
@@ -87,7 +97,19 @@ function getHTMLPlugins() {
     });
 
 
-    return [htmlPlugin]
+    // const scripts = globby.sync(["dist/dll/*.dll.js"]).map(p => p.replace("dist/", ""));
+
+    const tagsPlugin = new HtmlWebpackTagsPlugin({
+        append: false,
+        scripts: [{
+            path: 'dll',
+            glob: '*.js',
+            globPath: path.join(DIST_PATH, "dll")
+        }]
+    })
+
+
+    return [htmlPlugin, tagsPlugin]
 }
 
 
@@ -123,6 +145,10 @@ export function generateSW() {
         additionalManifestEntries: [
             {
                 url: "https://cdnjs.cloudflare.com/ajax/libs/phaser/3.53.1/phaser.min.js",
+                revision: "1.0.0"
+            },
+            {
+                url: "https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.min.js",
                 revision: "1.0.0"
             }
         ],
