@@ -1,12 +1,12 @@
-const DEFAULT_WIDTH = 750
-const DEFAULT_HEIGHT = 1334
+const DEFAULT_WIDTH = 750;
+const DEFAULT_HEIGHT = 1334;
 
-export default  {
+export default {
   type: Phaser.AUTO,
   backgroundColor: '#000',
   scale: {
     parent: 'phaser-game',
-    mode:  Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
+    mode: Phaser.Scale.WIDTH_CONTROLS_HEIGHT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT
@@ -18,4 +18,4 @@ export default  {
       gravity: { y: 400 }
     }
   }
-}
+};

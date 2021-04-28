@@ -5,6 +5,7 @@ import { Configuration } from "webpack";
 import { getPlugins } from "./utils/plugins";
 import { getVersion } from "./utils/util";
 import { DIST_PATH, IS_PRO, IS_DEV, NODE_ENV, SRC_PATH, ENV_CONFIG_PATH, getCDNPath } from "./utils/variable";
+const resolveConfig = require("./resolve");
 
 console.log("::ENV_CONFIG_PATH", ENV_CONFIG_PATH);
 
@@ -129,19 +130,5 @@ export const config: Configuration = {
     externals: {
         phaser: "Phaser"
     },
-    resolve: {
-        extensions: ['.ts', '.js'],
-        modules: [path.resolve(__dirname, "../node_modules")],
-        // 查找 package.json main
-        mainFields: ['main'],
-        alias: {
-            "@": SRC_PATH,
-            "@images": path.resolve(SRC_PATH, 'images'),
-            "@services": path.resolve(SRC_PATH, 'services'),
-            "@util": path.resolve(SRC_PATH, 'util'),
-            "@typess": path.resolve(SRC_PATH, 'types'),
-            "@consts": path.resolve(SRC_PATH, "consts")
-        }
-    }
-
+    resolve: resolveConfig
 }
