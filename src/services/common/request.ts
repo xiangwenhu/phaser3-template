@@ -10,8 +10,8 @@ const instance = axios.create({
 // 发送前设置
 instance.interceptors.request.use((config: AxiosRequestConfig) => {
     instance.defaults.headers.common.platform = "";
-    if (!navigator.onLine) {
-        // TODO:: 
+    if (!window.navigator.onLine) {
+        // TODO::
     }
     return config;
 });
@@ -22,7 +22,7 @@ instance.interceptors.response.use(
         const { data } = response;
         // 无效token
         if (typeof data === "object" && Reflect.has(data, "errCode") && INVALID_TOKEN_CODES.includes(data.errCode)) {
-            // TODO:: 
+            // TODO::
         }
 
         return response;

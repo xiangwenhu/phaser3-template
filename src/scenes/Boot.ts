@@ -1,19 +1,17 @@
-import Phaser from 'phaser'
+import Phaser from 'phaser';
 
 export default class extends Phaser.Scene {
-
     private ready: boolean = false;
 
     constructor() {
-        super({ key: 'BootScene' })
+        super({ key: 'BootScene' });
     }
 
     preload() {
-
         if (this.game.device.os.desktop) {
             // this.game.scale.scaleMode = Phaser.Scale.ScaleModes.NONE
         } else {
-            this.game.scale.scaleMode = Phaser.Scale.ScaleModes.WIDTH_CONTROLS_HEIGHT
+            this.game.scale.scaleMode = Phaser.Scale.ScaleModes.WIDTH_CONTROLS_HEIGHT;
         }
         // 加载进度条所需必备的资源
         this.ready = true;
@@ -21,8 +19,7 @@ export default class extends Phaser.Scene {
 
     update() {
         if (this.ready) {
-            this.scene.start('PreloadScene')
+            this.scene.start('PreloadScene');
         }
     }
-
 }

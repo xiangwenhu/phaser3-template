@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import getConfig from "./getConfig";
 import { get, post } from "./request";
 
-const config = getConfig();
+const configData = getConfig();
 
 export default class BaseService {
     private baseUrl: string;
@@ -34,9 +34,9 @@ export default class BaseService {
     /**
      *  处理简单的Query参数
      * @param baseUrl 基础地址
-     * @param query queryString 
+     * @param query queryString
      * @param config 其他配置
-     * @returns 
+     * @returns
      */
     getBySimpleQuery = <T>(baseUrl: string, query: Record<string, string> = {}, config?: AxiosRequestConfig): Promise<T> => {
         const curPath = this.getFullUrl(baseUrl, query);
@@ -50,8 +50,6 @@ export default class BaseService {
         post<T>(this.getFullPath(path), data, config);
 }
 
+export const apiService = new BaseService(configData.API_SERVER);
 
-export const apiService = new BaseService(config.API_SERVER);
-
-export const weatherService = new BaseService(config.API_SERVER_WEATHER);
-
+export const weatherService = new BaseService(configData.API_SERVER_WEATHER);

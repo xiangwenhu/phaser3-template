@@ -5,7 +5,7 @@ import MainScene from './scenes/Main';
 
 const gameConfig = Object.assign(config, {
   scene: [BootScene, PreloadScene, MainScene]
-})
+});
 
 export class Game extends Phaser.Game {
   constructor(config: Phaser.Types.Core.GameConfig) {
@@ -18,7 +18,6 @@ const game = new Game(gameConfig);
 // });
 
 function resizeCanvas() {
-
   const canvas = document.querySelector('canvas');
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
@@ -33,14 +32,11 @@ function resizeCanvas() {
   //   canvas.style.height = windowHeight + 'px';
   // }
 
-
-  canvas.style.width = windowWidth + "px";
-  canvas.style.height = (windowWidth / gameRatio) + 'px';
+  canvas.style.width = `${windowWidth}px`;
+  canvas.style.height = `${windowWidth / gameRatio}px`;
 
   console.log("width", windowWidth, "height", windowHeight);
-
 }
 
 window.addEventListener('resize', resizeCanvas, false);
 (window as any).resizeP = resizeCanvas;
-

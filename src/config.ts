@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 const DEFAULT_WIDTH = 750;
 const DEFAULT_HEIGHT = 1334;
 

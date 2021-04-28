@@ -5,11 +5,10 @@ import ProgressBar from "../objects/ProgressBar";
 import phaserLogo from "../assets/images/phaser-logo.png";
 
 export default class extends Phaser.Scene {
-
   private progressBar: ProgressBar;
 
   constructor() {
-    super({ key: 'PreloadScene' })
+    super({ key: 'PreloadScene' });
   }
 
   preload() {
@@ -25,23 +24,17 @@ export default class extends Phaser.Scene {
     }
   }
 
-
   addImage(key: string | Phaser.Types.Loader.FileTypes.ImageFileConfig | Phaser.Types.Loader.FileTypes.ImageFileConfig[], url?: string | string[], xhrSettings?: Phaser.Types.Loader.XHRSettingsObject) {
-
     if (!Array.isArray(url)) {
       return this.load.image(key, require(`../assets/images/${url}`), xhrSettings);
     }
 
     url.forEach(u => {
       this.load.image(key, require(`../assets/images/${u}`), xhrSettings);
-    })
-
+    });
   }
 
-
-
   addProgressBar() {
-
     console.time("preload-time");
     this.progressBar = new ProgressBar(this);
 
@@ -56,13 +49,11 @@ export default class extends Phaser.Scene {
     this.load.on('complete', () => {
       this.progressBar.destroy();
       console.timeEnd("preload-time");
-      this.scene.start('MainScene')
-    })
-
+      this.scene.start('MainScene');
+    });
   }
 
   create() {
-
     /**
      * This is how you would dynamically import the mainScene class (with code splitting),
      * add the mainScene to the Scene Manager

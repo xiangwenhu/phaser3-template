@@ -5,7 +5,6 @@ const CONFIG = {
     API_SERVER_WEATHER: process.env.API_SERVER_WEATHER
 };
 
-
 export default function getConfig() {
     return CONFIG;
 }
