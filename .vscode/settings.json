@@ -1,0 +1,22 @@
+{
+    "editor.detectIndentation": false,
+    "[javascript]": {    
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "terminal.integrated.shell.windows": "cmd.exe",
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 150,
+}
