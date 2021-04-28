@@ -10,6 +10,7 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 ## Key Features
 
 - 高级语法 async/await, Rest/Spread operators
+- 内置VSCode的eslint相关配置，想写烂代码都难
 - 支持代码拆分
 - webpack的配置使用TypeScript编写
 - Phaser采用外链，极大加速编译速度
