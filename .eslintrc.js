@@ -23,9 +23,9 @@ module.exports = {
          https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin/docs/rules
         */
 		// any
-		"@typescript-eslint/no-explicit-any": "error",
+		"@typescript-eslint/no-explicit-any": "warn",
 		// 不使用的变量
-		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-unused-vars": "warn",
 		// 显示申明function返回类型
 		"@typescript-eslint/explicit-function-return-type": "off",
 		// 显式的访问 get set

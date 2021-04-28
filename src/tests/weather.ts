@@ -1,15 +1,11 @@
 import { getWeatherByCity } from "../services/weather";
 
-; (async () => {
-
+ (async () => {
     try {
-  
       const res = await getWeatherByCity("北京");
-  
-      console.log("天气预报",  res);
-  
+
+      console.log("天气预报", res);
     } catch (err) {
       console.log(err);
     }
-  })()
-  
+  })();

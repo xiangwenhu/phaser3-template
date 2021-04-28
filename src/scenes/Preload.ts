@@ -66,6 +66,6 @@ export default class extends Phaser.Scene {
     //   import(/* webpackChunkName: "mainScene" */ './mainScene').then(mainScene => {
     //     this.scene.add('MainScene', mainScene.default, true)
     //   })
-    // else console.log('The mainScene class will not even be loaded by the browser')
+    // else console.log('The mainScene class will not even be loaded by the browser');
   }
 }

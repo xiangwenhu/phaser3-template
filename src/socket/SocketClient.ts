@@ -1,5 +1,5 @@
 import { ManagerOptions, SocketOptions, io, Socket } from 'socket.io-client';
-import { DefaultEventsMap } from '_socket.io-client@4.0.0@socket.io-client/build/typed-events';
+import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 
 export default class SocketClient {
     private socket: Socket<DefaultEventsMap, DefaultEventsMap>;
