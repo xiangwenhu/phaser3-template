@@ -51,5 +51,5 @@ $ npm run build
 ```
 
 ## 参考
-> [phaser-project-template](https://github.com/yandeu/phaser-project-template)
+> [phaser-project-template](https://github.com/yandeu/phaser-project-template)   
  [phaser3-es6-webpack](https://github.com/nkholski/phaser3-es6-webpack)
