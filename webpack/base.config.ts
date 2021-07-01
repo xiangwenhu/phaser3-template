@@ -1,10 +1,12 @@
-
 import path from "path";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { config as loadConfig } from "dotenv";
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Configuration } from "webpack";
 import { getPlugins } from "./utils/plugins";
 import { getVersion } from "./utils/util";
 import { DIST_PATH, IS_PRO, IS_DEV, NODE_ENV, SRC_PATH, ENV_CONFIG_PATH, getCDNPath } from "./utils/variable";
+
 const resolveConfig = require("./resolve");
 
 console.log("::ENV_CONFIG_PATH", ENV_CONFIG_PATH);
@@ -13,11 +15,11 @@ loadConfig({
     path: ENV_CONFIG_PATH
 });
 
-
 const version = getVersion();
 
 // TODO:: 修改path
 
+// eslint-disable-next-line import/prefer-default-export
 export const config: Configuration = {
     entry: {
         index: path.join(SRC_PATH, "./index.ts")
@@ -50,7 +52,7 @@ export const config: Configuration = {
                     {
                         loader: "thread-loader",
                         options: {
-                            workers: require("os").cpus().length * 2,
+                            workers: require("os").cpus().length - 1,
                             parallel: true
                         }
                     },
@@ -78,9 +80,8 @@ export const config: Configuration = {
                 type: 'asset/resource',
                 generator: {
                     filename: (context: any) => {
-
-                        // demo: src/assets/images/phaser-logo.png 
-                        const filename = context.filename;
+                        // demo: src/assets/images/phaser-logo.png
+                        const { filename } = context;
                         const filePath = path.resolve(__dirname, "../", filename);
 
                         // 获得相对路径 assets\images\phaser-logo.png
@@ -89,10 +90,10 @@ export const config: Configuration = {
                         const pre = relativePath.slice(0, relativePath.lastIndexOf("\\"));
 
                         // console.log("filename:", filename,  "filePath:", filePath, " src_path", SRC_PATH, " relativePath:", relativePath);
-                        
+
                         // console.log("pre", pre);
 
-                        return `${pre}/[name].[hash:6][ext]`
+                        return `${pre}/[name].[hash:6][ext]`;
                     }
                 },
                 // use: [
@@ -131,4 +132,4 @@ export const config: Configuration = {
         phaser: "Phaser"
     },
     resolve: resolveConfig
-}
+};

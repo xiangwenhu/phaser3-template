@@ -17,7 +17,6 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 - 内置DllPlugin，分离第三方包，飞一样的感觉
 - 内置代码混淆
 - 支持使用.env自定义环境配置数据
-- 支持动态分包
 - 内置加载进度条
 - 内置Boot, Preload等场景
 - 内置 service worker

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { Configuration, DllPlugin } from "webpack";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
@@ -8,10 +9,10 @@ const dllPath = path.join(__dirname, '../dist/dll');
 
 const config: Configuration = {
     mode: "production",
-    entry: {     
-        library: [  
+    entry: {
+        library: [
             "axios",
-            "socket.io-client"    
+            "socket.io-client"
         ]
     },
     output: {
@@ -28,7 +29,7 @@ const config: Configuration = {
             path: path.join(dllPath, '[name]_[fullhash:8].manifest.json')
         })
     ],
-    optimization:  {
+    optimization: {
         minimize: true
     }
 };

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import webpack, { Configuration as WebpackConfiguration } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import merge from "webpack-merge";
@@ -30,7 +31,7 @@ const config: Configuration = {
         proxy: {
             // "/service": {
             //     target: "http://localhost:3000"
-            // }          
+            // }
         }
     }
 };
